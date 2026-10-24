@@ -1,0 +1,7 @@
+{
+  "languages": ["python", "javascript", "c#", "sql"],
+  "backend":   ["fastapi"],
+  "database":  ["sql server", "supabase"],
+  "ml":        ["pytorch", "computer vision"],
+  "env":       ["windows", "linux", "git"]
+}

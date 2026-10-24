@@ -1,0 +1,3 @@
+i like building things that actually run.
+mostly desktop tools and ml stuff.
+still figuring it out  —  git push anyway.

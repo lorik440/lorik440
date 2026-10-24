@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Code.HP",
+    "lang": "js",
+    "desc": "snippet manager — stores and searches your code"
+  },
+  {
+    "name": "DockApp",
+    "lang": "c#",
+    "desc": "windows launcher that adapts to how you work"
+  },
+  {
+    "name": "TorchFoundry",
+    "lang": "py",
+    "desc": "pytorch utilities for cleaner ml workflows"
+  },
+  {
+    "name": "GestureNet",
+    "lang": "py",
+    "desc": "gesture recognition with computer vision"
+  }
+]
