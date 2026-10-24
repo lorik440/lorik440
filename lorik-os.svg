@@ -50,9 +50,9 @@
   <text x="348" y="760" font-size="12" fill="#6DEBAA">Python        <tspan fill="#C8FFE0">85%</tspan></text>
   <rect x="348" y="776" width="504" height="10" rx="3" fill="#07120D"/>
   <rect x="348" y="776" width="428" height="10" rx="3" fill="#27FF9C"/>
-  <text x="348" y="798" font-size="12" fill="#6DEBAA">JavaScript    <tspan fill="#C8FFE0">14%</tspan></text>
+  <text x="348" y="798" font-size="12" fill="#6DEBAA">JavaScript    <tspan fill="#C8FFE0">15%</tspan></text>
   <rect x="348" y="814" width="504" height="10" rx="3" fill="#07120D"/>
-  <rect x="348" y="814" width="71" height="10" rx="3" fill="#4FDC91"/>
+  <rect x="348" y="814" width="76" height="10" rx="3" fill="#4FDC91"/>
   <text x="348" y="836" font-size="12" fill="#6DEBAA">C#            <tspan fill="#C8FFE0">1%</tspan></text>
   <rect x="348" y="852" width="504" height="10" rx="3" fill="#07120D"/>
   <rect x="348" y="852" width="5" height="10" rx="3" fill="#6DEBAA"/>
