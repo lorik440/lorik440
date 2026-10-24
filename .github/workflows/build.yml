@@ -3,21 +3,20 @@ name: Rebuild lorik-os.svg
 on:
   push:
     paths:
-      # rebuild whenever you edit any of these files
       - 'data/**'
       - 'about.txt'
       - 'scripts/build-svg.js'
+  repository_dispatch:
+    types: [repo_pushed]   # triggered by other repos when you push to them
   schedule:
-    # also rebuild every day at 06:00 UTC so stats stay fresh
-    - cron: '0 6 * * *'
-  workflow_dispatch:
-    # lets you trigger a manual rebuild from the Actions tab
+    - cron: '0 6 * * *'   # daily fallback at 06:00 UTC
+  workflow_dispatch:       # manual trigger from Actions tab
 
 jobs:
   build:
     runs-on: ubuntu-latest
     permissions:
-      contents: write   # needed to commit lorik-os.svg back to the repo
+      contents: write
 
     steps:
       - name: Checkout
