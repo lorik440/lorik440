@@ -47,6 +47,7 @@ function httpsGet(url, token) {
       let data = '';
       res.on('data', c => data += c);
       res.on('end', () => {
+        if (res.statusCode === 404) { reject(new Error('404')); return; }
         try { resolve(JSON.parse(data)); }
         catch { reject(new Error('JSON parse failed: ' + data.slice(0, 100))); }
       });
@@ -79,7 +80,10 @@ async function fetchGitHubData(username, token) {
       pct: Math.round((bytes / totalBytes) * 100)
     }));
 
-  // fetch latest commit from each of the 3 most recently pushed repos
+  // fetch latest commit from each of the 3 most recently pushed repos.
+  // if the repo has lorik-sync installed, read .lorik-sync/latest.json
+  // (written by the workflow in that repo — no token needed, public raw URL).
+  // fall back to the commits API for repos without lorik-sync.
   const topRepos = repos
     .filter(r => !r.fork && r.pushed_at && r.name !== username)
     .sort((a, b) => new Date(b.pushed_at) - new Date(a.pushed_at))
@@ -87,6 +91,21 @@ async function fetchGitHubData(username, token) {
 
   const recentPushes = [];
   for (const r of topRepos) {
+    // try lorik-sync first (no auth required — public raw file)
+    const rawUrl = `https://raw.githubusercontent.com/${username}/${r.name}/HEAD/.lorik-sync/latest.json`;
+    try {
+      const data = await httpsGet(rawUrl, ''); // no token, public
+      if (data && data.hash && data.message) {
+        recentPushes.push({
+          repo:    data.repo || r.name,
+          message: String(data.message).slice(0, 52),
+          hash:    String(data.hash).slice(0, 7)
+        });
+        continue;
+      }
+    } catch {}
+
+    // fall back to commits API (uses optional token for rate limit)
     try {
       const commits = await httpsGet(
         `https://api.github.com/repos/${username}/${r.name}/commits?per_page=1`, token
