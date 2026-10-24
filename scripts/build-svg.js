@@ -347,18 +347,10 @@ async function main() {
   const skills   = readJSON('data/skills.json');
   const about    = readText('about.txt').split('\n').filter(l => l.trim()).slice(0, 4);
 
-  // commits registry — persistent list from data/commits.json
-  // sorted by pushed_at descending (most recent first)
-  let commits = [];
-  try {
-    commits = readJSON('data/commits.json');
-    commits.sort((a, b) => new Date(b.pushed_at) - new Date(a.pushed_at));
-  } catch {}
-
   let gh;
   try {
     gh = await fetchGitHubData(identity.username, token);
-    console.log('GitHub data:', JSON.stringify(gh, null, 2));
+    console.log('GitHub data fetched successfully.');
   } catch (err) {
     console.error('GitHub API failed, using fallback stats:', err.message);
     gh = {
@@ -369,11 +361,36 @@ async function main() {
         { name: 'JavaScript', pct: 25 },
         { name: 'C#', pct: 25 },
       ],
+      recentPushes: [],
     };
   }
 
-  // use commits registry for the git log section
-  gh.recentPushes = commits.slice(0, 5); // show up to 5 entries
+  // merge live recentPushes with persistent commits.json registry:
+  // - commits.json holds repos not yet updated this run (no lorik-sync or 404)
+  // - live data from lorik-sync takes priority and updates the registry entry
+  let registry = [];
+  try { registry = readJSON('data/commits.json'); } catch {}
+
+  // build a map of registry entries keyed by repo name
+  const registryMap = {};
+  for (const entry of registry) registryMap[entry.repo] = entry;
+
+  // upsert live entries (lorik-sync repos) into the map
+  for (const entry of gh.recentPushes) {
+    registryMap[entry.repo] = entry;
+  }
+
+  // sort by pushed_at descending — most recent first
+  const merged = Object.values(registryMap)
+    .sort((a, b) => new Date(b.pushed_at || 0) - new Date(a.pushed_at || 0));
+
+  // write updated registry back to data/commits.json
+  const commitsPath = path.join(__dirname, '..', 'data', 'commits.json');
+  fs.writeFileSync(commitsPath, JSON.stringify(merged, null, 2) + '\n', 'utf8');
+  console.log(`Registry: ${merged.length} repos tracked.`);
+
+  // use merged list for git log section (show up to 5)
+  gh.recentPushes = merged.slice(0, 5);
 
   const svg = buildSVG({ identity, projects, skills, aboutLines: about, gh });
   const out = path.join(__dirname, '..', 'lorik-os.svg');
