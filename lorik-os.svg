@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg"
-     viewBox="0 0 900 1060" width="900" height="1060"
+     viewBox="0 0 900 1104" width="900" height="1104"
      role="img" aria-label="lorik440 — terminal profile">
   <title>lorik440</title>
   <defs>
@@ -9,7 +9,7 @@
       text { font-family: 'JetBrains Mono','Cascadia Code','Fira Code',ui-monospace,Menlo,monospace; }
     </style>
   </defs>
-  <rect width="900" height="1060" fill="#030806"/>
+  <rect width="900" height="1104" fill="#030806"/>
   <text x="28" y="44" font-size="13" fill="#3AA374">lorik@lorik-os:~$  <tspan fill="#8EFFC6">whoami</tspan></text>
   <text x="28" y="66" font-size="15" font-weight="700" fill="#27FF9C">lorik Bajrami</text>
   <text x="28" y="92" font-size="13" fill="#6DEBAA">software dev  ·  python, javascript, c#</text>
@@ -20,54 +20,56 @@
   <text x="28" y="230" font-size="13" fill="#8EFFC6">GestureNet     <tspan fill="#6DEBAA">py    </tspan><tspan fill="#C8FFE0">gesture recognition with computer vision</tspan></text>
   <text x="28" y="280" font-size="13" fill="#3AA374">lorik@lorik-os:~$  <tspan fill="#8EFFC6">cat about.txt</tspan></text>
   <text x="28" y="302" font-size="13" fill="#C8FFE0">`&gt; INITIALIZING CURIOSITY...`</text>
-  <text x="28" y="324" font-size="13" fill="#C8FFE0"></text>
-  <text x="28" y="346" font-size="13" fill="#6DEBAA">Building desktop software, exploring machine learning, and turning random ideas into working systems.</text>
-  <text x="28" y="396" font-size="13" fill="#3AA374">lorik@lorik-os:~$  <tspan fill="#8EFFC6">cat skills.txt</tspan></text>
-  <text x="28" y="418" font-size="13" fill="#6DEBAA">languages  <tspan fill="#C8FFE0">python  javascript  c#  sql</tspan></text>
-  <text x="28" y="440" font-size="13" fill="#6DEBAA">backend    <tspan fill="#C8FFE0">fastapi</tspan></text>
-  <text x="28" y="462" font-size="13" fill="#6DEBAA">database   <tspan fill="#C8FFE0">sql server  supabase</tspan></text>
-  <text x="28" y="484" font-size="13" fill="#6DEBAA">ml         <tspan fill="#C8FFE0">pytorch  computer vision</tspan></text>
-  <text x="28" y="534" font-size="13" fill="#3AA374">lorik@lorik-os:~$  <tspan fill="#8EFFC6">git log --oneline -3</tspan></text>
-  <text x="28" y="556" font-size="13" fill="#6DEBAA">1818e1b  <tspan fill="#C8FFE0">torchfoundry: updated README.md to reflect project structure and i</tspan></text>
-  <text x="28" y="578" font-size="13" fill="#6DEBAA">51aa917  <tspan fill="#C8FFE0">code.hp: chore: remove unused electronmon dependency</tspan></text>
-  <text x="28" y="600" font-size="13" fill="#6DEBAA">6a762bc  <tspan fill="#C8FFE0">dockapp: updated app ranking system</tspan></text>
-  <text x="28" y="650" font-size="13" fill="#3AA374">lorik@lorik-os:~$</text>
-  <rect x="198" y="636" width="9" height="15" fill="#27FF9C">
+  <text x="28" y="324" font-size="13" fill="#C8FFE0">Building desktop software, exploring machine learning, and turning random ideas into working systems.</text>
+  <text x="28" y="346" font-size="13" fill="#6DEBAA">`STATUS: LEARNING`</text>
+  <text x="28" y="368" font-size="13" fill="#C8FFE0">`BUILDS: ONGOING`</text>
+  <text x="28" y="418" font-size="13" fill="#3AA374">lorik@lorik-os:~$  <tspan fill="#8EFFC6">cat skills.txt</tspan></text>
+  <text x="28" y="440" font-size="13" fill="#6DEBAA">languages  <tspan fill="#C8FFE0">python  javascript  c#  sql</tspan></text>
+  <text x="28" y="462" font-size="13" fill="#6DEBAA">backend    <tspan fill="#C8FFE0">fastapi</tspan></text>
+  <text x="28" y="484" font-size="13" fill="#6DEBAA">database   <tspan fill="#C8FFE0">sql server  supabase</tspan></text>
+  <text x="28" y="506" font-size="13" fill="#6DEBAA">ml         <tspan fill="#C8FFE0">pytorch  computer vision</tspan></text>
+  <text x="28" y="556" font-size="13" fill="#3AA374">lorik@lorik-os:~$  <tspan fill="#8EFFC6">git log --oneline -4</tspan></text>
+  <text x="28" y="578" font-size="13" fill="#6DEBAA">1818e1b  <tspan fill="#C8FFE0">torchfoundry: updated README.md to reflect project structure</tspan></text>
+  <text x="28" y="600" font-size="13" fill="#6DEBAA">51aa917  <tspan fill="#C8FFE0">code.hp: chore: remove unused electronmon dependency</tspan></text>
+  <text x="28" y="622" font-size="13" fill="#6DEBAA">6a762bc  <tspan fill="#C8FFE0">dockapp: updated app ranking system</tspan></text>
+  <text x="28" y="644" font-size="13" fill="#6DEBAA">c91d440  <tspan fill="#C8FFE0">gesturenet: initial model commit</tspan></text>
+  <text x="28" y="694" font-size="13" fill="#3AA374">lorik@lorik-os:~$</text>
+  <rect x="198" y="680" width="9" height="15" fill="#27FF9C">
     <animate attributeName="opacity" values="1;0;1" dur="1.1s" repeatCount="indefinite"/>
   </rect>
-  <line x1="0" y1="690" x2="900" y2="690" stroke="#0d2a1a" stroke-width="1"/>
-  <text x="28" y="708" font-size="11" fill="#1a4a2e" letter-spacing="2">// system.stats ──────────────────────────────────────────────────────────────────────────────────────────</text>
-  <line x1="0" y1="716" x2="900" y2="716" stroke="#0d2a1a" stroke-width="1"/>
-  <text x="28" y="736" font-size="11" fill="#3AA374" letter-spacing="1">GITHUB STATS</text>
-  <text x="28" y="760" font-size="13" fill="#6DEBAA">repos        <tspan fill="#C8FFE0">5</tspan></text>
-  <text x="28" y="782" font-size="13" fill="#6DEBAA">stars        <tspan fill="#C8FFE0">2</tspan></text>
-  <text x="28" y="804" font-size="13" fill="#6DEBAA">followers    <tspan fill="#C8FFE0">2</tspan></text>
-  <text x="28" y="826" font-size="13" fill="#6DEBAA">following    <tspan fill="#C8FFE0">4</tspan></text>
-  <text x="28" y="848" font-size="13" fill="#6DEBAA">member since <tspan fill="#C8FFE0">2025.06</tspan></text>
-  <text x="28" y="870" font-size="13" fill="#6DEBAA">status       <tspan fill="#27FF9C">●</tspan><tspan fill="#C8FFE0"> online</tspan></text>
-  <line x1="320" y1="726" x2="320" y2="912" stroke="#0d2a1a" stroke-width="1"/>
-  <text x="348" y="736" font-size="11" fill="#3AA374" letter-spacing="1">TOP LANGUAGES</text>
-  <text x="348" y="760" font-size="12" fill="#6DEBAA">Python        <tspan fill="#C8FFE0">85%</tspan></text>
-  <rect x="348" y="776" width="504" height="10" rx="3" fill="#07120D"/>
-  <rect x="348" y="776" width="428" height="10" rx="3" fill="#27FF9C"/>
-  <text x="348" y="798" font-size="12" fill="#6DEBAA">JavaScript    <tspan fill="#C8FFE0">15%</tspan></text>
-  <rect x="348" y="814" width="504" height="10" rx="3" fill="#07120D"/>
-  <rect x="348" y="814" width="76" height="10" rx="3" fill="#4FDC91"/>
-  <text x="348" y="836" font-size="12" fill="#6DEBAA">C#            <tspan fill="#C8FFE0">1%</tspan></text>
-  <rect x="348" y="852" width="504" height="10" rx="3" fill="#07120D"/>
-  <rect x="348" y="852" width="5" height="10" rx="3" fill="#6DEBAA"/>
-  <line x1="0" y1="922" x2="900" y2="922" stroke="#0d2a1a" stroke-width="1"/>
-  <text x="28" y="940" font-size="11" fill="#1a4a2e" letter-spacing="2">// system.streak ──────────────────────────────────────────────────────────────────────────────────────────</text>
-  <line x1="0" y1="948" x2="900" y2="948" stroke="#0d2a1a" stroke-width="1"/>
-  <text x="150" y="968" font-size="11" fill="#6DEBAA" text-anchor="middle" letter-spacing="1">REPOS</text>
-  <text x="150" y="1002" font-size="32" font-weight="700" fill="#27FF9C" text-anchor="middle">5</text>
-  <text x="150" y="1020" font-size="11" fill="#3AA374" text-anchor="middle">public</text>
-  <line x1="300" y1="958" x2="300" y2="1030" stroke="#0d2a1a" stroke-width="1"/>
-  <text x="450" y="968" font-size="11" fill="#6DEBAA" text-anchor="middle" letter-spacing="1">STARS</text>
-  <text x="450" y="1002" font-size="32" font-weight="700" fill="#4FDC91" text-anchor="middle">2</text>
-  <text x="450" y="1020" font-size="11" fill="#3AA374" text-anchor="middle">total</text>
-  <line x1="600" y1="958" x2="600" y2="1030" stroke="#0d2a1a" stroke-width="1"/>
-  <text x="750" y="968" font-size="11" fill="#6DEBAA" text-anchor="middle" letter-spacing="1">FOLLOWERS</text>
-  <text x="750" y="1002" font-size="32" font-weight="700" fill="#8EFFC6" text-anchor="middle">2</text>
-  <text x="750" y="1020" font-size="11" fill="#3AA374" text-anchor="middle">following</text>
+  <line x1="0" y1="734" x2="900" y2="734" stroke="#0d2a1a" stroke-width="1"/>
+  <text x="28" y="752" font-size="11" fill="#1a4a2e" letter-spacing="2">// system.stats ──────────────────────────────────────────────────────────────────────────────────────────</text>
+  <line x1="0" y1="760" x2="900" y2="760" stroke="#0d2a1a" stroke-width="1"/>
+  <text x="28" y="780" font-size="11" fill="#3AA374" letter-spacing="1">GITHUB STATS</text>
+  <text x="28" y="804" font-size="13" fill="#6DEBAA">repos        <tspan fill="#C8FFE0">6</tspan></text>
+  <text x="28" y="826" font-size="13" fill="#6DEBAA">stars        <tspan fill="#C8FFE0">2</tspan></text>
+  <text x="28" y="848" font-size="13" fill="#6DEBAA">followers    <tspan fill="#C8FFE0">2</tspan></text>
+  <text x="28" y="870" font-size="13" fill="#6DEBAA">following    <tspan fill="#C8FFE0">4</tspan></text>
+  <text x="28" y="892" font-size="13" fill="#6DEBAA">member since <tspan fill="#C8FFE0">2025.06</tspan></text>
+  <text x="28" y="914" font-size="13" fill="#6DEBAA">status       <tspan fill="#27FF9C">●</tspan><tspan fill="#C8FFE0"> online</tspan></text>
+  <line x1="320" y1="770" x2="320" y2="956" stroke="#0d2a1a" stroke-width="1"/>
+  <text x="348" y="780" font-size="11" fill="#3AA374" letter-spacing="1">TOP LANGUAGES</text>
+  <text x="348" y="804" font-size="12" fill="#6DEBAA">Python        <tspan fill="#C8FFE0">84%</tspan></text>
+  <rect x="348" y="820" width="504" height="10" rx="3" fill="#07120D"/>
+  <rect x="348" y="820" width="423" height="10" rx="3" fill="#27FF9C"/>
+  <text x="348" y="842" font-size="12" fill="#6DEBAA">JavaScript    <tspan fill="#C8FFE0">15%</tspan></text>
+  <rect x="348" y="858" width="504" height="10" rx="3" fill="#07120D"/>
+  <rect x="348" y="858" width="76" height="10" rx="3" fill="#4FDC91"/>
+  <text x="348" y="880" font-size="12" fill="#6DEBAA">C#            <tspan fill="#C8FFE0">1%</tspan></text>
+  <rect x="348" y="896" width="504" height="10" rx="3" fill="#07120D"/>
+  <rect x="348" y="896" width="5" height="10" rx="3" fill="#6DEBAA"/>
+  <line x1="0" y1="966" x2="900" y2="966" stroke="#0d2a1a" stroke-width="1"/>
+  <text x="28" y="984" font-size="11" fill="#1a4a2e" letter-spacing="2">// system.streak ──────────────────────────────────────────────────────────────────────────────────────────</text>
+  <line x1="0" y1="992" x2="900" y2="992" stroke="#0d2a1a" stroke-width="1"/>
+  <text x="150" y="1012" font-size="11" fill="#6DEBAA" text-anchor="middle" letter-spacing="1">REPOS</text>
+  <text x="150" y="1046" font-size="32" font-weight="700" fill="#27FF9C" text-anchor="middle">6</text>
+  <text x="150" y="1064" font-size="11" fill="#3AA374" text-anchor="middle">public</text>
+  <line x1="300" y1="1002" x2="300" y2="1074" stroke="#0d2a1a" stroke-width="1"/>
+  <text x="450" y="1012" font-size="11" fill="#6DEBAA" text-anchor="middle" letter-spacing="1">STARS</text>
+  <text x="450" y="1046" font-size="32" font-weight="700" fill="#4FDC91" text-anchor="middle">2</text>
+  <text x="450" y="1064" font-size="11" fill="#3AA374" text-anchor="middle">total</text>
+  <line x1="600" y1="1002" x2="600" y2="1074" stroke="#0d2a1a" stroke-width="1"/>
+  <text x="750" y="1012" font-size="11" fill="#6DEBAA" text-anchor="middle" letter-spacing="1">FOLLOWERS</text>
+  <text x="750" y="1046" font-size="32" font-weight="700" fill="#8EFFC6" text-anchor="middle">2</text>
+  <text x="750" y="1064" font-size="11" fill="#3AA374" text-anchor="middle">following</text>
 </svg>
