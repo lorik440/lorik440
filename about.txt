@@ -1,3 +1,7 @@
-i like building things that actually run.
-mostly desktop tools and ml stuff.
-still figuring it out  —  git push anyway.
+`> INITIALIZING CURIOSITY...`
+
+Building desktop software, exploring machine learning, and turning random ideas into working systems.
+
+`STATUS: LEARNING`
+`BUILDS: ONGOING`
+`GIT PUSH: AUTHORIZED`
