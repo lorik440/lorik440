@@ -228,7 +228,7 @@ function buildSVG({ identity, projects, skills, aboutLines, gh }) {
 
   // ── git log ──
   gap();
-  svg += prompt('git log --oneline -3');
+  svg += prompt(`git log --oneline -${gh.recentPushes.length}`);
   for (const c of gh.recentPushes) {
     svg += `  <text x="28" y="${y}" font-size="13" fill="${C.green3}">${esc(c.hash)}  <tspan fill="${C.text}">${esc(c.repo.toLowerCase())}: ${esc(c.message)}</tspan></text>\n`;
     y += LH;
@@ -345,33 +345,35 @@ async function main() {
   const identity = readJSON('data/identity.json');
   const projects = readJSON('data/projects.json');
   const skills   = readJSON('data/skills.json');
-  const about    = readText('about.txt').split('\n').slice(0, 3);
+  const about    = readText('about.txt').split('\n').filter(l => l.trim()).slice(0, 4);
+
+  // commits registry — persistent list from data/commits.json
+  // sorted by pushed_at descending (most recent first)
+  let commits = [];
+  try {
+    commits = readJSON('data/commits.json');
+    commits.sort((a, b) => new Date(b.pushed_at) - new Date(a.pushed_at));
+  } catch {}
 
   let gh;
   try {
     gh = await fetchGitHubData(identity.username, token);
     console.log('GitHub data:', JSON.stringify(gh, null, 2));
   } catch (err) {
-    console.error('GitHub API failed, using fallback data:', err.message);
+    console.error('GitHub API failed, using fallback stats:', err.message);
     gh = {
-      name: identity.name,
-      publicRepos: 5,
-      followers: 2,
-      following: 4,
-      joined: '2025.06',
-      stars: 2,
+      publicRepos: 5, followers: 2, following: 4,
+      joined: '2025.06', stars: 2,
       languages: [
-        { name: 'Python',     pct: 50 },
+        { name: 'Python', pct: 50 },
         { name: 'JavaScript', pct: 25 },
-        { name: 'C#',         pct: 25 },
-      ],
-      recentPushes: [
-        { hash: 'a3f9c12', repo: 'TorchFoundry', message: 'add torchfoundry utilities' },
-        { hash: '7b2e881', repo: 'DockApp',       message: 'fix launcher priority logic' },
-        { hash: 'c91d440', repo: 'Code.HP',       message: 'instant search on keystroke' },
+        { name: 'C#', pct: 25 },
       ],
     };
   }
+
+  // use commits registry for the git log section
+  gh.recentPushes = commits.slice(0, 5); // show up to 5 entries
 
   const svg = buildSVG({ identity, projects, skills, aboutLines: about, gh });
   const out = path.join(__dirname, '..', 'lorik-os.svg');
