@@ -1,15 +1,5 @@
 [
   {
-    "repo": "DockApp",
-    "message": "updated app ranking system",
-    "hash": "6a762bc"
-  },
-  {
-    "repo": "GestureNet",
-    "message": "initial model commit",
-    "hash": "c91d440"
-  },
-  {
     "repo": "TorchFoundry",
     "message": "updated README.md to reflect project structure and instalation guide, updated CHANGELOG.md",
     "hash": "1818e1b"
@@ -20,8 +10,13 @@
     "hash": "51aa917"
   },
   {
-    "repo": "lorik-sync",
-    "message": "1.0.2",
-    "hash": "ba350d2"
+    "repo": "DockApp",
+    "message": "updated app ranking system",
+    "hash": "6a762bc"
+  },
+  {
+    "repo": "GestureNet",
+    "message": "reorganized the folder structure and added a README.md",
+    "hash": "1c21cfb"
   }
 ]
