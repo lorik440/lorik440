@@ -19,10 +19,10 @@
   <text x="28" y="208" font-size="13" fill="#8EFFC6">TorchFoundry   <tspan fill="#6DEBAA">py    </tspan><tspan fill="#C8FFE0">pytorch utilities for cleaner ml workflows</tspan></text>
   <text x="28" y="230" font-size="13" fill="#8EFFC6">GestureNet     <tspan fill="#6DEBAA">py    </tspan><tspan fill="#C8FFE0">gesture recognition with computer vision</tspan></text>
   <text x="28" y="280" font-size="13" fill="#3AA374">lorik@lorik-os:~$  <tspan fill="#8EFFC6">cat about.txt</tspan></text>
-  <text x="28" y="302" font-size="13" fill="#C8FFE0">`&gt; INITIALIZING CURIOSITY...`</text>
-  <text x="28" y="324" font-size="13" fill="#C8FFE0">Building desktop software, exploring machine learning, and turning random ideas into working systems.</text>
-  <text x="28" y="346" font-size="13" fill="#6DEBAA">`STATUS: LEARNING`</text>
-  <text x="28" y="368" font-size="13" fill="#C8FFE0">`BUILDS: ONGOING`</text>
+  <text x="28" y="302" font-size="13" fill="#C8FFE0">`&gt; INITIALIZING CURIOSITY...`</text>
+  <text x="28" y="324" font-size="13" fill="#C8FFE0">Building desktop software, exploring machine learning, and turning random ideas into working systems.</text>
+  <text x="28" y="346" font-size="13" fill="#6DEBAA">`STATUS: LEARNING`</text>
+  <text x="28" y="368" font-size="13" fill="#C8FFE0">`BUILDS: ONGOING`</text>
   <text x="28" y="418" font-size="13" fill="#3AA374">lorik@lorik-os:~$  <tspan fill="#8EFFC6">cat skills.txt</tspan></text>
   <text x="28" y="440" font-size="13" fill="#6DEBAA">languages  <tspan fill="#C8FFE0">python  javascript  c#  sql</tspan></text>
   <text x="28" y="462" font-size="13" fill="#6DEBAA">backend    <tspan fill="#C8FFE0">fastapi</tspan></text>
