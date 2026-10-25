@@ -1,0 +1,21 @@
+{
+  "publicRepos": 6,
+  "followers": 2,
+  "following": 4,
+  "joined": "2025.06",
+  "stars": 2,
+  "languages": [
+    {
+      "name": "Python",
+      "pct": 84
+    },
+    {
+      "name": "JavaScript",
+      "pct": 15
+    },
+    {
+      "name": "C#",
+      "pct": 1
+    }
+  ]
+}

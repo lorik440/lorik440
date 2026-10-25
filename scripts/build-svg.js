@@ -1,19 +1,19 @@
 #!/usr/bin/env node
 /**
  * build-svg.js
- * Reads data/ files + about.txt, fetches real recent commits from GitHub API,
- * then writes lorik-os.svg.
+ * Reads data/ files + about.txt and writes lorik-os.svg.
+ *
+ * No live API calls happen here. The dynamic data (commits.json, gh-stats.json)
+ * is kept fresh on separate schedules by scripts/fetch-gitlog.js and
+ * scripts/fetch-gh-stats.js, run from .github/workflows/. This script only
+ * renders, so it is fast and never hits the network.
  *
  * Usage:
  *   node scripts/build-svg.js
- *
- * Env vars (optional — used in GitHub Actions):
- *   GITHUB_TOKEN   personal access token for higher API rate limit
  */
 
 const fs   = require('fs');
 const path = require('path');
-const https = require('https');
 
 // ── helpers ──────────────────────────────────────────────────────────────────
 
@@ -37,108 +37,6 @@ function esc(str) {
 function pad(str, len) {
   const s = String(str);
   return s + ' '.repeat(Math.max(0, len - s.length));
-}
-
-function httpsGet(url, token) {
-  return new Promise((resolve, reject) => {
-    const headers = { 'User-Agent': 'lorik440-build' };
-    if (token) headers['Authorization'] = `token ${token}`;
-    https.get(url, { headers }, res => {
-      let data = '';
-      res.on('data', c => data += c);
-      res.on('end', () => {
-        if (res.statusCode === 404) { reject(new Error('404')); return; }
-        try { resolve(JSON.parse(data)); }
-        catch { reject(new Error('JSON parse failed: ' + data.slice(0, 100))); }
-      });
-    }).on('error', reject);
-  });
-}
-
-// ── fetch real data from GitHub ───────────────────────────────────────────────
-
-async function fetchGitHubData(username, token) {
-  console.log('Fetching GitHub data for', username);
-
-  const user  = await httpsGet(`https://api.github.com/users/${username}`, token);
-  const repos = await httpsGet(`https://api.github.com/users/${username}/repos?sort=updated&per_page=100`, token);
-
-  // language byte counts across all non-fork repos
-  const langBytes = {};
-  for (const repo of repos.filter(r => !r.fork)) {
-    if (repo.language) {
-      langBytes[repo.language] = (langBytes[repo.language] || 0) + (repo.size || 1);
-    }
-  }
-
-  const totalBytes = Object.values(langBytes).reduce((a, b) => a + b, 0) || 1;
-  const languages = Object.entries(langBytes)
-    .sort((a, b) => b[1] - a[1])
-    .slice(0, 4)
-    .map(([lang, bytes]) => ({
-      name: lang,
-      pct: Math.round((bytes / totalBytes) * 100)
-    }));
-
-  // fetch latest commit from each of the 3 most recently pushed repos.
-  // if the repo has latest-commit-sync installed, read .latest-commit/latest.json
-  // (written by the workflow in that repo — no token needed, public raw URL).
-  // fall back to the commits API for repos without latest-commit-sync.
-  const topRepos = repos
-    .filter(r => !r.fork && r.pushed_at && r.name !== username)
-    .sort((a, b) => new Date(b.pushed_at) - new Date(a.pushed_at))
-    .slice(0, 3);
-
-  const recentPushes = [];
-  for (const r of topRepos) {
-    // try latest-commit-sync first (no auth required — public raw file)
-    const rawUrl = `https://raw.githubusercontent.com/${username}/${r.name}/HEAD/.latest-commit/latest.json`;
-    try {
-      const data = await httpsGet(rawUrl, ''); // no token, public
-      if (data && data.hash && data.message) {
-        recentPushes.push({
-          repo:    data.repo || r.name,
-          message: String(data.message).slice(0, 52),
-          hash:    String(data.hash).slice(0, 7)
-        });
-        continue;
-      }
-    } catch {}
-
-    // fall back to commits API (uses optional token for rate limit)
-    try {
-      const commits = await httpsGet(
-        `https://api.github.com/repos/${username}/${r.name}/commits?per_page=1`, token
-      );
-      const c = Array.isArray(commits) && commits[0];
-      if (c) {
-        recentPushes.push({
-          repo:    r.name,
-          message: c.commit.message.split('\n')[0].slice(0, 52),
-          hash:    c.sha.slice(0, 7)
-        });
-      }
-    } catch {
-      recentPushes.push({
-        repo:    r.name,
-        message: `update ${r.name.toLowerCase()}`,
-        hash:    r.pushed_at.slice(2, 4) + r.pushed_at.slice(5, 7) + r.pushed_at.slice(8, 10) + 'a'
-      });
-    }
-  }
-
-  const stars = repos.filter(r => !r.fork).reduce((s, r) => s + r.stargazers_count, 0);
-
-  return {
-    name:        user.name || username,
-    publicRepos: user.public_repos,
-    followers:   user.followers,
-    following:   user.following,
-    joined:      user.created_at.slice(0, 7).replace('-', '.'),
-    stars,
-    languages,
-    recentPushes
-  };
 }
 
 // ── SVG builder ───────────────────────────────────────────────────────────────
@@ -341,56 +239,27 @@ ${svg}</svg>
 // ── main ──────────────────────────────────────────────────────────────────────
 
 async function main() {
-  const token    = process.env.GITHUB_TOKEN || '';
   const identity = readJSON('data/identity.json');
   const projects = readJSON('data/projects.json');
   const skills   = readJSON('data/skills.json');
   const about    = readText('about.txt').split('\n').filter(l => l.trim()).slice(0, 4);
 
-  let gh;
-  try {
-    gh = await fetchGitHubData(identity.username, token);
-    console.log('GitHub data fetched successfully.');
-  } catch (err) {
-    console.error('GitHub API failed, using fallback stats:', err.message);
-    gh = {
-      publicRepos: 5, followers: 2, following: 4,
-      joined: '2025.06', stars: 2,
-      languages: [
-        { name: 'Python', pct: 50 },
-        { name: 'JavaScript', pct: 25 },
-        { name: 'C#', pct: 25 },
-      ],
-      recentPushes: [],
-    };
-  }
+  // Dynamic data, kept fresh by the scheduled workflows — no live API here.
+  // Missing files fall back to empty/zero so a first run never crashes.
+  let ghStats = {};
+  try { ghStats = readJSON('data/gh-stats.json'); } catch {}
+  let commits = [];
+  try { commits = readJSON('data/commits.json') || []; } catch {}
 
-  // merge live recentPushes with persistent commits.json registry:
-  // - commits.json holds repos not yet updated this run (no latest-commit-sync or 404)
-  // - live data from latest-commit-sync takes priority and updates the registry entry
-  let registry = [];
-  try { registry = readJSON('data/commits.json'); } catch {}
-
-  // build a map of registry entries keyed by repo name
-  const registryMap = {};
-  for (const entry of registry) registryMap[entry.repo] = entry;
-
-  // upsert live entries (latest-commit-sync repos) into the map
-  for (const entry of gh.recentPushes) {
-    registryMap[entry.repo] = entry;
-  }
-
-  // sort by pushed_at descending — most recent first
-  const merged = Object.values(registryMap)
-    .sort((a, b) => new Date(b.pushed_at || 0) - new Date(a.pushed_at || 0));
-
-  // write updated registry back to data/commits.json
-  const commitsPath = path.join(__dirname, '..', 'data', 'commits.json');
-  fs.writeFileSync(commitsPath, JSON.stringify(merged, null, 2) + '\n', 'utf8');
-  console.log(`Registry: ${merged.length} repos tracked.`);
-
-  // use merged list for git log section (show up to 5)
-  gh.recentPushes = merged.slice(0, 5);
+  const gh = {
+    publicRepos:  ghStats.publicRepos ?? 0,
+    followers:    ghStats.followers   ?? 0,
+    following:    ghStats.following   ?? 0,
+    joined:       ghStats.joined      ?? '',
+    stars:        ghStats.stars       ?? 0,
+    languages:    Array.isArray(ghStats.languages) ? ghStats.languages : [],
+    recentPushes: commits.slice(0, 5),
+  };
 
   const svg = buildSVG({ identity, projects, skills, aboutLines: about, gh });
   const out = path.join(__dirname, '..', 'lorik-os.svg');

@@ -1,0 +1,42 @@
+name: Build git log
+
+# Refresh the git log section: fetch latest commits via the GitHub API,
+# update data/commits.json, rebuild lorik-os.svg, commit only if changed.
+on:
+  schedule:
+    - cron: '*/5 * * * *'   # every 5 min (fastest GitHub allows)
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+# Serialize with the other SVG builders so two runs never collide on lorik-os.svg.
+concurrency:
+  group: build-svg
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Fetch latest commits
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: node scripts/fetch-gitlog.js
+
+      - name: Rebuild SVG
+        run: node scripts/build-svg.js
+
+      - name: Commit if changed
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/commits.json lorik-os.svg
+          git diff --cached --quiet || git commit -m "auto: refresh git log [skip ci]"
+          git push
