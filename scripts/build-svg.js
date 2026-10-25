@@ -81,9 +81,9 @@ async function fetchGitHubData(username, token) {
     }));
 
   // fetch latest commit from each of the 3 most recently pushed repos.
-  // if the repo has lorik-sync installed, read .lorik-sync/latest.json
+  // if the repo has latest-commit-sync installed, read .latest-commit/latest.json
   // (written by the workflow in that repo — no token needed, public raw URL).
-  // fall back to the commits API for repos without lorik-sync.
+  // fall back to the commits API for repos without latest-commit-sync.
   const topRepos = repos
     .filter(r => !r.fork && r.pushed_at && r.name !== username)
     .sort((a, b) => new Date(b.pushed_at) - new Date(a.pushed_at))
@@ -91,8 +91,8 @@ async function fetchGitHubData(username, token) {
 
   const recentPushes = [];
   for (const r of topRepos) {
-    // try lorik-sync first (no auth required — public raw file)
-    const rawUrl = `https://raw.githubusercontent.com/${username}/${r.name}/HEAD/.lorik-sync/latest.json`;
+    // try latest-commit-sync first (no auth required — public raw file)
+    const rawUrl = `https://raw.githubusercontent.com/${username}/${r.name}/HEAD/.latest-commit/latest.json`;
     try {
       const data = await httpsGet(rawUrl, ''); // no token, public
       if (data && data.hash && data.message) {
@@ -366,8 +366,8 @@ async function main() {
   }
 
   // merge live recentPushes with persistent commits.json registry:
-  // - commits.json holds repos not yet updated this run (no lorik-sync or 404)
-  // - live data from lorik-sync takes priority and updates the registry entry
+  // - commits.json holds repos not yet updated this run (no latest-commit-sync or 404)
+  // - live data from latest-commit-sync takes priority and updates the registry entry
   let registry = [];
   try { registry = readJSON('data/commits.json'); } catch {}
 
@@ -375,7 +375,7 @@ async function main() {
   const registryMap = {};
   for (const entry of registry) registryMap[entry.repo] = entry;
 
-  // upsert live entries (lorik-sync repos) into the map
+  // upsert live entries (latest-commit-sync repos) into the map
   for (const entry of gh.recentPushes) {
     registryMap[entry.repo] = entry;
   }
