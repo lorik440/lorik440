@@ -39,6 +39,20 @@ function pad(str, len) {
   return s + ' '.repeat(Math.max(0, len - s.length));
 }
 
+// word-wrap a string into lines of at most maxCols columns (breaks at spaces)
+function wrapText(str, maxCols) {
+  const words = String(str).split(' ');
+  const lines = [];
+  let cur = '';
+  for (const w of words) {
+    if (!cur) { cur = w; continue; }
+    if ((cur + ' ' + w).length <= maxCols) { cur += ' ' + w; }
+    else { lines.push(cur); cur = w; }
+  }
+  if (cur) lines.push(cur);
+  return lines.length ? lines : [''];
+}
+
 // ── SVG builder ───────────────────────────────────────────────────────────────
 
 function buildSVG({ identity, projects, skills, aboutLines, gh }) {
@@ -127,9 +141,22 @@ function buildSVG({ identity, projects, skills, aboutLines, gh }) {
   // ── git log ──
   gap();
   svg += prompt(`git log --oneline -${gh.recentPushes.length}`);
+  const charW = 7.8;    // approx monospace char width at font-size 13
+  const rightPad = 24;  // right margin inside the 900px canvas
   for (const c of gh.recentPushes) {
-    svg += `  <text x="28" y="${y}" font-size="13" fill="${C.green3}">${esc(c.hash)}  <tspan fill="${C.text}">${esc(c.repo.toLowerCase())}: ${esc(c.message)}</tspan></text>\n`;
+    const repo = c.repo.toLowerCase();
+    const prefixCols = c.hash.length + 2 + repo.length + 2; // "hash  repo: "
+    const msgStartX = 28 + prefixCols * charW;
+    const msgCols = Math.max(24, Math.floor((900 - msgStartX - rightPad) / charW));
+    const lines = wrapText(c.message, msgCols);
+    // first line: hash + "repo: " + first wrapped chunk
+    svg += `  <text x="28" y="${y}" font-size="13" fill="${C.green3}">${esc(c.hash)}  <tspan fill="${C.text}">${esc(repo)}: ${esc(lines[0] || '')}</tspan></text>\n`;
     y += LH;
+    // continuation lines, indented to line up under the message
+    for (let i = 1; i < lines.length; i++) {
+      svg += `  <text x="${msgStartX.toFixed(1)}" y="${y}" font-size="13" fill="${C.text}">${esc(lines[i])}</text>\n`;
+      y += LH;
+    }
   }
   gap();
 

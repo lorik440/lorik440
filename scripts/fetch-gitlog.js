@@ -48,7 +48,7 @@ async function main() {
       if (c) {
         recent.push({
           repo:    r.name,
-          message: (c.commit.message.split('\n')[0] || '').slice(0, 52),
+          message: (c.commit.message.split('\n')[0] || '').slice(0, 120),
           hash:    (c.sha || '').slice(0, 7),
         });
         continue;
