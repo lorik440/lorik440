@@ -1,16 +1,17 @@
 name: Build git log
 
-# Refresh the git log section: fetch latest commits via the GitHub API,
-# update data/commits.json, rebuild lorik-os.svg, commit only if changed.
+# Refresh the git log section using the GitHub API,
+# update data/commits.json, rebuild lorik-os.svg,
+# and commit only when files have changed.
 on:
   schedule:
-    - cron: '*/5 * * * *'   # every 5 min (fastest GitHub allows)
+    - cron: '*/5 * * * *'
   workflow_dispatch:
 
 permissions:
   contents: write
 
-# Serialize with the other SVG builders so two runs never collide on lorik-os.svg.
+# Prevent simultaneous SVG builds from conflicting.
 concurrency:
   group: build-svg
   cancel-in-progress: false
@@ -18,10 +19,15 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
         with:
           node-version: '20'
 
@@ -33,10 +39,18 @@ jobs:
       - name: Rebuild SVG
         run: node scripts/build-svg.js
 
-      - name: Commit if changed
+      - name: Commit and push if changed
         run: |
-          git config user.name  "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
           git add data/commits.json lorik-os.svg
-          git diff --cached --quiet || git commit -m "auto: refresh git log [skip ci]"
-          git push
+
+          if ! git diff --cached --quiet; then
+            git commit -m "auto: refresh git log [skip ci]"
+            git push
+          else
+            echo "No changes detected. Nothing to commit."
+          fi
+
+
