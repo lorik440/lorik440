@@ -42,7 +42,7 @@
   <text x="28" y="774" font-size="11" fill="#1a4a2e" letter-spacing="2">// system.stats ──────────────────────────────────────────────────────────────────────────────────────────</text>
   <line x1="0" y1="782" x2="900" y2="782" stroke="#0d2a1a" stroke-width="1"/>
   <text x="28" y="802" font-size="11" fill="#3AA374" letter-spacing="1">GITHUB STATS</text>
-  <text x="28" y="826" font-size="13" fill="#6DEBAA">repos        <tspan fill="#C8FFE0">6</tspan></text>
+  <text x="28" y="826" font-size="13" fill="#6DEBAA">repos        <tspan fill="#C8FFE0">5</tspan></text>
   <text x="28" y="848" font-size="13" fill="#6DEBAA">stars        <tspan fill="#C8FFE0">2</tspan></text>
   <text x="28" y="870" font-size="13" fill="#6DEBAA">followers    <tspan fill="#C8FFE0">2</tspan></text>
   <text x="28" y="892" font-size="13" fill="#6DEBAA">following    <tspan fill="#C8FFE0">4</tspan></text>
@@ -63,7 +63,7 @@
   <text x="28" y="1006" font-size="11" fill="#1a4a2e" letter-spacing="2">// system.streak ──────────────────────────────────────────────────────────────────────────────────────────</text>
   <line x1="0" y1="1014" x2="900" y2="1014" stroke="#0d2a1a" stroke-width="1"/>
   <text x="150" y="1034" font-size="11" fill="#6DEBAA" text-anchor="middle" letter-spacing="1">REPOS</text>
-  <text x="150" y="1068" font-size="32" font-weight="700" fill="#27FF9C" text-anchor="middle">6</text>
+  <text x="150" y="1068" font-size="32" font-weight="700" fill="#27FF9C" text-anchor="middle">5</text>
   <text x="150" y="1086" font-size="11" fill="#3AA374" text-anchor="middle">public</text>
   <line x1="300" y1="1024" x2="300" y2="1096" stroke="#0d2a1a" stroke-width="1"/>
   <text x="450" y="1034" font-size="11" fill="#6DEBAA" text-anchor="middle" letter-spacing="1">STARS</text>
