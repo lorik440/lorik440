@@ -29,7 +29,7 @@
   <text x="28" y="484" font-size="13" fill="#6DEBAA">database   <tspan fill="#C8FFE0">sql server  supabase</tspan></text>
   <text x="28" y="506" font-size="13" fill="#6DEBAA">ml         <tspan fill="#C8FFE0">pytorch  computer vision</tspan></text>
   <text x="28" y="556" font-size="13" fill="#3AA374">lorik@lorik-os:~$  <tspan fill="#8EFFC6">git log --oneline -4</tspan></text>
-  <text x="28" y="578" font-size="13" fill="#6DEBAA">705b5ed  <tspan fill="#C8FFE0">torchfoundry: updated CHANGELOG.md</tspan></text>
+  <text x="28" y="578" font-size="13" fill="#6DEBAA">991623d  <tspan fill="#C8FFE0">torchfoundry: TorchFoundry 0.1.2 release</tspan></text>
   <text x="28" y="600" font-size="13" fill="#6DEBAA">51aa917  <tspan fill="#C8FFE0">code.hp: chore: remove unused electronmon dependency</tspan></text>
   <text x="28" y="622" font-size="13" fill="#6DEBAA">6a762bc  <tspan fill="#C8FFE0">dockapp: updated app ranking system</tspan></text>
   <text x="28" y="644" font-size="13" fill="#6DEBAA">1c21cfb  <tspan fill="#C8FFE0">gesturenet: reorganized the folder structure and added a README.md</tspan></text>
