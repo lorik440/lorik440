@@ -1,8 +1,8 @@
 [
   {
     "repo": "TorchFoundry",
-    "message": "TorchFoundry 0.1.2 release",
-    "hash": "991623d"
+    "message": "updated example script to pass ruff check test",
+    "hash": "d77baeb"
   },
   {
     "repo": "Code.HP",
