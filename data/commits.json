@@ -1,8 +1,8 @@
 [
   {
     "repo": "TorchFoundry",
-    "message": "updated example script to pass ruff check test",
-    "hash": "d77baeb"
+    "message": "added README.md badges",
+    "hash": "67b9949"
   },
   {
     "repo": "Code.HP",
