@@ -2,7 +2,7 @@
   {
     "repo": "TorchFoundry",
     "message": "Potential fix for code scanning alert no. 1: Workflow does not contain permissions",
-    "hash": "f9e584d"
+    "hash": "3764e6d"
   },
   {
     "repo": "Code.HP",
