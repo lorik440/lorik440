@@ -43,7 +43,7 @@
   <text x="28" y="780" font-size="11" fill="#3AA374" letter-spacing="1">GITHUB STATS</text>
   <text x="28" y="804" font-size="13" fill="#6DEBAA">repos        <tspan fill="#C8FFE0">5</tspan></text>
   <text x="28" y="826" font-size="13" fill="#6DEBAA">stars        <tspan fill="#C8FFE0">2</tspan></text>
-  <text x="28" y="848" font-size="13" fill="#6DEBAA">followers    <tspan fill="#C8FFE0">2</tspan></text>
+  <text x="28" y="848" font-size="13" fill="#6DEBAA">followers    <tspan fill="#C8FFE0">3</tspan></text>
   <text x="28" y="870" font-size="13" fill="#6DEBAA">following    <tspan fill="#C8FFE0">4</tspan></text>
   <text x="28" y="892" font-size="13" fill="#6DEBAA">member since <tspan fill="#C8FFE0">2025.06</tspan></text>
   <text x="28" y="914" font-size="13" fill="#6DEBAA">status       <tspan fill="#27FF9C">●</tspan><tspan fill="#C8FFE0"> online</tspan></text>
@@ -70,6 +70,6 @@
   <text x="450" y="1064" font-size="11" fill="#3AA374" text-anchor="middle">total</text>
   <line x1="600" y1="1002" x2="600" y2="1074" stroke="#0d2a1a" stroke-width="1"/>
   <text x="750" y="1012" font-size="11" fill="#6DEBAA" text-anchor="middle" letter-spacing="1">FOLLOWERS</text>
-  <text x="750" y="1046" font-size="32" font-weight="700" fill="#8EFFC6" text-anchor="middle">2</text>
+  <text x="750" y="1046" font-size="32" font-weight="700" fill="#8EFFC6" text-anchor="middle">3</text>
   <text x="750" y="1064" font-size="11" fill="#3AA374" text-anchor="middle">following</text>
 </svg>
