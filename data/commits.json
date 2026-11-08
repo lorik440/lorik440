@@ -1,8 +1,8 @@
 [
   {
     "repo": "TorchFoundry",
-    "message": "Potential fix for code scanning alert no. 1: Workflow does not contain permissions",
-    "hash": "3764e6d"
+    "message": "fixed unused variable in data.py, and fixed function format in model.py",
+    "hash": "f6551e8"
   },
   {
     "repo": "Code.HP",
