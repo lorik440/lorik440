@@ -1,8 +1,8 @@
 [
   {
     "repo": "TorchFoundry",
-    "message": "fix: training.py function autamatic parent directory creation on saving model after training",
-    "hash": "f3a0442"
+    "message": "added a new test scripts",
+    "hash": "3e21bcd"
   },
   {
     "repo": "Code.HP",
