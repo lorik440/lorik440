@@ -1,5 +1,10 @@
 [
   {
+    "repo": "ArgusAI",
+    "message": "added README.MD badges",
+    "hash": "82a4e32"
+  },
+  {
     "repo": "TorchFoundry",
     "message": "added a new test scripts",
     "hash": "3e21bcd"
