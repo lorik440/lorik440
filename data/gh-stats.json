@@ -1,5 +1,5 @@
 {
-  "publicRepos": 5,
+  "publicRepos": 6,
   "followers": 3,
   "following": 6,
   "joined": "2025.06",
@@ -7,11 +7,11 @@
   "languages": [
     {
       "name": "Python",
-      "pct": 84
+      "pct": 83
     },
     {
       "name": "JavaScript",
-      "pct": 15
+      "pct": 16
     },
     {
       "name": "C#",
