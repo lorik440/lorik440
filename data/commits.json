@@ -1,8 +1,8 @@
 [
   {
     "repo": "ArgusAI",
-    "message": "added README.MD badges",
-    "hash": "82a4e32"
+    "message": "build: update Docker setup and expose AI-engine dependencies",
+    "hash": "1cb9b3e"
   },
   {
     "repo": "TorchFoundry",
