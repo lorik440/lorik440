@@ -1,8 +1,8 @@
 [
   {
     "repo": "ArgusAI",
-    "message": "build: update Docker setup and expose AI-engine dependencies",
-    "hash": "1cb9b3e"
+    "message": "Merge pull request #1 from lorik440/dependabot/pip/ai_engine/pip-9d54f72059",
+    "hash": "ab32f04"
   },
   {
     "repo": "TorchFoundry",
