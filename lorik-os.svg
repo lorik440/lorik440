@@ -29,8 +29,8 @@
   <text x="28" y="484" font-size="13" fill="#6DEBAA">database   <tspan fill="#C8FFE0">sql server  supabase</tspan></text>
   <text x="28" y="506" font-size="13" fill="#6DEBAA">ml         <tspan fill="#C8FFE0">pytorch  computer vision</tspan></text>
   <text x="28" y="556" font-size="13" fill="#3AA374">lorik@lorik-os:~$  <tspan fill="#8EFFC6">git log --oneline -5</tspan></text>
-  <text x="28" y="578" font-size="13" fill="#6DEBAA">ab32f04  <tspan fill="#C8FFE0">argusai: Merge pull request #1 from lorik440/dependabot/pip/ai_engine/pip-9d54f72059</tspan></text>
-  <text x="28" y="600" font-size="13" fill="#6DEBAA">3e21bcd  <tspan fill="#C8FFE0">torchfoundry: added a new test scripts</tspan></text>
+  <text x="28" y="578" font-size="13" fill="#6DEBAA">8d6f73a  <tspan fill="#C8FFE0">torchfoundry: updated version</tspan></text>
+  <text x="28" y="600" font-size="13" fill="#6DEBAA">f16157d  <tspan fill="#C8FFE0">argusai: updated dependencies</tspan></text>
   <text x="28" y="622" font-size="13" fill="#6DEBAA">51aa917  <tspan fill="#C8FFE0">code.hp: chore: remove unused electronmon dependency</tspan></text>
   <text x="28" y="644" font-size="13" fill="#6DEBAA">6a762bc  <tspan fill="#C8FFE0">dockapp: updated app ranking system</tspan></text>
   <text x="28" y="666" font-size="13" fill="#6DEBAA">1c21cfb  <tspan fill="#C8FFE0">gesturenet: reorganized the folder structure and added a README.md</tspan></text>

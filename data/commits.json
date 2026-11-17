@@ -1,13 +1,13 @@
 [
   {
-    "repo": "ArgusAI",
-    "message": "Merge pull request #1 from lorik440/dependabot/pip/ai_engine/pip-9d54f72059",
-    "hash": "ab32f04"
+    "repo": "TorchFoundry",
+    "message": "updated version",
+    "hash": "8d6f73a"
   },
   {
-    "repo": "TorchFoundry",
-    "message": "added a new test scripts",
-    "hash": "3e21bcd"
+    "repo": "ArgusAI",
+    "message": "updated dependencies",
+    "hash": "f16157d"
   },
   {
     "repo": "Code.HP",
