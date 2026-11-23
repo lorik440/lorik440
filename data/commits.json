@@ -1,13 +1,13 @@
 [
   {
+    "repo": "ArgusAI",
+    "message": "feat(ai-engine): add live pose estimation pipeline",
+    "hash": "a473db3"
+  },
+  {
     "repo": "TorchFoundry",
     "message": "updated version",
     "hash": "8d6f73a"
-  },
-  {
-    "repo": "ArgusAI",
-    "message": "updated dependencies",
-    "hash": "f16157d"
   },
   {
     "repo": "Code.HP",
